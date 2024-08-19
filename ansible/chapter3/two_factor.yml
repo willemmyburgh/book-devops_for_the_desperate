@@ -6,7 +6,7 @@
 
 - name: Copy over Preconfigured GoogleAuthenticator config
   copy:
-    src: ../ansible/chapter3/google_authenticator
+    src: chapter3/google_authenticator
     dest: /home/bender/.google_authenticator
     owner: bender
     group: bender
@@ -34,9 +34,9 @@
   blockinfile:
     path: "/etc/ssh/sshd_config"
     block: |
-      Match User "ubuntu,vagrant"
+      Match User ubuntu,vagrant
           AuthenticationMethods publickey
-      Match User "bender,!vagrant,!ubuntu"
+      Match User bender,!vagrant,!ubuntu
           AuthenticationMethods publickey,keyboard-interactive
     state: present
   notify: "Restart SSH Server"
