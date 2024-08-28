@@ -9,8 +9,8 @@
 
 - name: Copy Flask Sample Application
   copy:
-    src: "../ansible/chapter4/{{ item }}"
-    dest: "/opt/engineering/{{ item }}"
+    src: chapter4/{{ item }}
+    dest: /opt/engineering/{{ item }}
     group: developers
     mode: '0750'
   loop:
@@ -19,8 +19,8 @@
 
 - name: Copy systemd Unit file for Greeting
   copy:
-    src: "../ansible/chapter4/greeting.service"
-    dest: "/etc/systemd/system/greeting.service"
+    src: chapter4/greeting.service
+    dest: /etc/systemd/system/greeting.service
 
 - name: Start and enable Greeting Application
   systemd:
